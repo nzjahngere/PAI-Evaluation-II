@@ -41,3 +41,4 @@ public class InventoryManager {
         return salhist;
     }
 }
+
