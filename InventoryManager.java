@@ -15,6 +15,19 @@ public class InventoryManager {
         } else {
             prodstk.put(sku, quantity);
         }
+
+        /*
+        
+        Boolean prodIsAvailable = true;
+        prodIsAvailable = prodstk;
+        if(true) {
+           sku++
+        } else {
+            prodst.put(sku, quantity);
+        }
+        
+        */
+        
     }
 
     public int getProductStock(String sku) {
