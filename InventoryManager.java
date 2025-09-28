@@ -1,57 +1,43 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class InventoryManager {
 
-    public void addProductStock(String sku, int quantity) {
-
-        ArrayList<String> stkUnt = new ArrayList<>();
-
-        stkUnt.add("Accesories");
-        stkUnt.add("Clothes");
-        stkUnt.add("Jewelleries");
+    private Map<String, Integer> prodstk = new HashMap<>();
         
-        ArrayList<int> stkQtt = new ArrayList<>();
-
-        stkQtt.add(120);
-        stkQtt.add(175);
-        stkQtt.add(188);
-
+    public void addProductStock(String sku, int quantity) {
+        if (prodstk.containsKey(sku)) {
+            prodstk.put(sku, prodstk.get(sku) + quantity);
+        } else {
+            prodstk.put(sku, quantity);
+        }
     }
 
     public int getProductStock(String sku) {
-        
-        return stkUnt;
-        return stkQtt;
+        return prodstk.getOrDefault(sku, 0);
     }
 
-    public void addCategory(String categoryName1, String categoryName2, String categoryName3) {
+    private Set<String> cates = new HashSet<>();
 
-        ArrayList<String> cats = new ArrayList<>();
-
-        cats.add(categoryName1);
-        cats.add(categoryName2);
-        cats.add(categoryName3);
-        
+    public void addCategory(String categoryName) {
+        cates.add(categoryName);
     }
 
     public Set<String> getAvailableCategories() {
-
-        ArrayList<String> cats = new ArrayList<>();
-
-        cats.add("Women");
-        cats.add("Men");
-        cats.add("Children");
-
-        return null;
+        return cates;
     }
 
+    private List<String> salhist = new ArrayList<>();
+
     public void recordSale(String sku) {
-        
+        salhist.add(sku);
     }
 
     public List<String> getSalesHistory() {
-        return null;
+        return salhist;
     }
 }
